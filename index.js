@@ -1,12 +1,16 @@
 require('dotenv').config() 
 const express=require ('express')
 const cors=require ('cors')
+const router=require('./routes/routes')
 require('./dbConnection')
+
 
 
 const pfserver=express()
 pfserver.use(cors())
 pfserver.use(express.json())
+pfserver.use(router)
+
 
 pfserver.get('/helloWorld',(req,res)=>{
     res.status(201).send('<h1>Hellow world</h1>')
